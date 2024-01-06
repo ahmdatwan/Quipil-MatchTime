@@ -99,7 +99,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     return InkWell(
                       child: Card(child: Text(output[index]['name'])),
                       onTap: () {
-                        MongoDatabase.addtoFavs(output[index]['UID']);
+                        MongoDatabase.addtoFavs(
+                            output[index]['UID'], output[index]['score']);
                         final snackBar = SnackBar(
                           content: const Text('Tutor Added!'),
                         );

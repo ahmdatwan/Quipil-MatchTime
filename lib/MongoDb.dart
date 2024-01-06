@@ -31,13 +31,8 @@ class MongoDatabase {
     return res;
   }
 
-  static addtoFavs(String tutorID) async {
-    print(
-        "Before update: ${await db.collection(studentPref_Name).find().toList()}");
-    await db
-        .collection(studentPref_Name)
-        .modernUpdate(where.eq("UID", UID), modify.push("tutors", tutorID));
-    print(
-        "After update: ${await db.collection(studentPref_Name).findOne(where.eq("UID", UID))}");
+  static addtoFavs(String tutorID, int score) async {
+    await db.collection(studentPref_Name).modernUpdate(where.eq("UID", UID),
+        modify.push("tutors", {"tutorID": tutorID, "score": score}));
   }
 }
